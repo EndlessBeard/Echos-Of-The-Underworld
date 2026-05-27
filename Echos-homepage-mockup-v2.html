@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Echoes Of The Underworld — Homepage Mockup v2</title>
+  <title>Echoes from the Underworld — Homepage Mockup v2</title>
   <style>
     :root {
       --text: #f2f2f2;
       --ink: #000000;
+      --page-bg: #141111;
       --header-bg: #b4b4b4;
       --hero-bg: #000000;
       --podcast-bg: #d86759;
@@ -34,7 +35,7 @@
     body {
       margin: 0;
       min-height: 100vh;
-      background: #141111;
+      background: var(--page-bg);
       color: var(--text);
       font-family: Arial, Helvetica, sans-serif;
       line-height: 1.45;
@@ -318,34 +319,6 @@
       width: 54px;
     }
 
-    .section-caret::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
-      transform: translateX(-160%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .section-band:hover .section-caret::after {
-      animation: shine-right 700ms ease;
-    }
-
-    @keyframes shine-right {
-      0% {
-        transform: translateX(-160%);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateX(160%);
-        opacity: 0;
-      }
-    }
-
     .section-action {
       display: none;
       align-items: center;
@@ -386,29 +359,11 @@
       display: block;
     }
 
-    .section-button::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 2px;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
-      opacity: 0;
-      pointer-events: none;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    .section-button.is-shining::after {
-      animation: shine-right 700ms ease;
-    }
-
-    .section-button .button-icon {
+    .section-button > img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
+      object-position: center;
       display: block;
     }
 
@@ -461,7 +416,7 @@
 
     .connect {
       --section-bg: var(--connect-bg);
-      --section-fill: var(--connect-bg);
+      --section-fill: var(--page-bg);
       background: var(--section-bg);
     }
 
@@ -593,8 +548,8 @@
   </svg>
   <header>
     <div class="page toolbar">
-      <a class="brand" href="#hero" aria-label="Echoes Of The Underworld home">
-        <span>Echoes Of The Underworld</span>
+      <a class="brand" href="#hero" aria-label="Echoes from the Underworld home">
+        <span>Echoes from the Underworld</span>
       </a>
       <a class="menu-button" href="#connect" aria-label="Hamburger Menu">
         <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
@@ -605,7 +560,7 @@
   <main class="page">
     <section class="section-band hero-band hero" id="hero" aria-label="Hero Section">
       <div class="hero-media" aria-label="Facebook Logo Image">
-        <img src="Echoes from the Underworld Logo (Facebook Cover).png" alt="Facebook logo for Echoes Of The Underworld" />
+        <img src="Echoes from the Underworld Logo (Facebook Cover).png" alt="Facebook logo for Echoes from the Underworld" />
       </div>
       <a class="hero-button" href="#podcast">
         Listen Now
@@ -732,23 +687,5 @@
       </section>
     </div>
   </main>
-  <script>
-    (() => {
-      const shineTargets = document.querySelectorAll('.section-button');
-
-      if (!shineTargets.length) {
-        return;
-      }
-
-      const replayShine = () => {
-        shineTargets.forEach((target) => target.classList.remove('is-shining'));
-        void document.body.offsetWidth;
-        shineTargets.forEach((target) => target.classList.add('is-shining'));
-      };
-
-      replayShine();
-      window.setInterval(replayShine, 3000);
-    })();
-  </script>
 </body>
 </html>

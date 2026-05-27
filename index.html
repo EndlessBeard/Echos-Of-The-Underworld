@@ -318,34 +318,6 @@
       width: 54px;
     }
 
-    .section-caret::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
-      transform: translateX(-160%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .section-band:hover .section-caret::after {
-      animation: shine-right 700ms ease;
-    }
-
-    @keyframes shine-right {
-      0% {
-        transform: translateX(-160%);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.85;
-      }
-      100% {
-        transform: translateX(160%);
-        opacity: 0;
-      }
-    }
-
     .section-action {
       display: none;
       align-items: center;
@@ -384,25 +356,6 @@
       border: 4px solid currentColor;
       background: rgba(255, 255, 255, 0.12);
       display: block;
-    }
-
-    .section-button::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      padding: 2px;
-      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
-      opacity: 0;
-      pointer-events: none;
-      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-    }
-
-    .section-button.is-shining::after {
-      animation: shine-right 700ms ease;
     }
 
     .section-button .button-icon {
@@ -677,23 +630,5 @@
       </section>
     </div>
   </main>
-  <script>
-    (() => {
-      const shineTargets = document.querySelectorAll('.section-button');
-
-      if (!shineTargets.length) {
-        return;
-      }
-
-      const replayShine = () => {
-        shineTargets.forEach((target) => target.classList.remove('is-shining'));
-        void document.body.offsetWidth;
-        shineTargets.forEach((target) => target.classList.add('is-shining'));
-      };
-
-      replayShine();
-      window.setInterval(replayShine, 3000);
-    })();
-  </script>
 </body>
 </html>
