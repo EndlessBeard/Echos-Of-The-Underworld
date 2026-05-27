@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Echoes Of The Underworld — Homepage Mockup v2</title>
+  <style>
+    :root {
+      --text: #f2f2f2;
+      --ink: #000000;
+      --header-bg: #b4b4b4;
+      --hero-bg: #000000;
+      --podcast-bg: #d86759;
+      --services-bg: #b4473a;
+      --resources-bg: #953d33;
+      --store-bg: #5e221d;
+      --about-bg: #6c2222;
+      --connect-bg: #1b1111;
+      --border: rgba(255, 255, 255, 0.16);
+      --outline: rgba(0, 0, 0, 0.18);
+      --max-width: 1180px;
+      --radius: 18px;
+      --section-min-height: 225px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #141111;
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: var(--header-bg);
+      color: var(--ink);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    }
+
+    .toolbar {
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 18px 8px 18px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      flex: 1;
+      text-align: left;
+    }
+
+    .menu-button,
+    .section-button,
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+    }
+
+    .menu-button {
+      margin-left: auto;
+      gap: 0;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.22);
+      background: rgba(255, 255, 255, 0.35);
+      font-weight: 700;
+    }
+
+    .menu-icon {
+      display: inline-flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .menu-icon span {
+      width: 14px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+
+    main {
+      padding: 0 0 28px;
+    }
+
+    .hero,
+    .section-band {
+      border-radius: 0;
+      overflow: hidden;
+      border: none;
+      margin-top: 0;
+    }
+
+    .hero {
+      background: var(--hero-bg);
+      display: grid;
+      grid-template-columns: 1fr;
+      position: relative;
+    }
+
+    .hero-copy,
+    .hero-media,
+    .section-copy,
+    .section-caret,
+    .section-action {
+      padding: 0;
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      min-width: 0;
+    }
+
+    .hero-kicker,
+    .section-kicker {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      font-size: 0.74rem;
+      opacity: 0.72;
+    }
+
+    .hero-copy h1 {
+      margin: 0;
+      max-width: 11ch;
+      font-size: clamp(2.9rem, 5vw, 5.3rem);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+    }
+
+    .hero-copy p {
+      margin: 0;
+      max-width: 58ch;
+      color: rgba(242, 242, 242, 0.78);
+      font-size: 1rem;
+    }
+
+    .hero-footer {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      min-height: 90px;
+    }
+
+    .hero-button {
+      min-height: 52px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: #f2f2f2;
+      color: #111;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      gap: 10px;
+    }
+
+    .hero-button svg,
+    .section-button svg,
+    .caret svg,
+    .section-caret svg {
+      width: 20px;
+      height: 20px;
+      flex: 0 0 auto;
+    }
+
+    .hero-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-left: none;
+      min-height: 0;
+      padding: 0;
+    }
+
+    .hero-logo-placeholder {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 320px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.16));
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-media img {
+      width: 100%;
+      max-width: none;
+      height: auto;
+      border-radius: 0;
+      display: block;
+    }
+
+    .section-stack {
+      display: grid;
+      gap: 0;
+      margin-top: 0;
+    }
+
+    .section-band {
+      min-height: var(--section-min-height);
+      height: var(--section-min-height);
+      display: flex;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .section-main {
+      flex: 1 1 auto;
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+      height: 100%;
+      position: relative;
+    }
+
+    .section-copy {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 10px;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .section-copy-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-items: stretch;
+      gap: 16px;
+      min-width: 0;
+      width: 100%;
+      height: 100%;
+      padding-right: clamp(146px, 17vw, 171px);
+    }
+
+    .button-cell {
+      display: flex;
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      right: 16px;
+      align-self: stretch;
+      align-items: stretch;
+      padding: 0;
+    }
+
+    .section-copy h2 {
+      margin: 0;
+      font-size: clamp(2rem, 3vw, 2.9rem);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+      max-width: none;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .section-copy p {
+      margin: 0;
+      max-width: 60ch;
+      color: rgba(242, 242, 242, 0.82);
+    }
+
+    .section-caret {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+      width: 54px;
+    }
+
+    .section-caret::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
+      transform: translateX(-160%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .section-band:hover .section-caret::after {
+      animation: shine-right 700ms ease;
+    }
+
+    @keyframes shine-right {
+      0% {
+        transform: translateX(-160%);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateX(160%);
+        opacity: 0;
+      }
+    }
+
+    .section-action {
+      display: none;
+      align-items: center;
+      justify-content: flex-end;
+      flex: 0 0 112px;
+      padding-left: 0;
+    }
+
+    .section-button {
+      width: auto;
+      height: 100%;
+      aspect-ratio: 2 / 3;
+      border-radius: 4px;
+      border: 4px solid rgba(255, 255, 255, 0.22);
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text);
+      padding: 0;
+      display: flex;
+      align-items: stretch;
+      justify-content: stretch;
+      position: relative;
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .section-copy-row .section-button {
+      margin-left: auto;
+      justify-self: end;
+      align-self: stretch;
+    }
+
+    .section-button .button-placeholder {
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 2 / 3;
+      border: 4px solid currentColor;
+      background: rgba(255, 255, 255, 0.12);
+      display: block;
+    }
+
+    .section-button::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.95) 50%, transparent 100%);
+      opacity: 0;
+      pointer-events: none;
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+
+    .section-button.is-shining::after {
+      animation: shine-right 700ms ease;
+    }
+
+    .section-button .button-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .section-button:hover,
+    .hero-button:hover,
+    .menu-button:hover {
+      filter: brightness(1.05);
+    }
+
+    .section-button svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .hero-band {
+      background: var(--hero-bg);
+      height: auto;
+      min-height: 0;
+    }
+
+    .podcast {
+      background: var(--podcast-bg);
+    }
+
+    .services {
+      background: var(--services-bg);
+    }
+
+    .resources {
+      background: var(--resources-bg);
+    }
+
+    .store {
+      background: var(--store-bg);
+    }
+
+    .about {
+      background: var(--about-bg);
+    }
+
+    .connect {
+      background: var(--connect-bg);
+    }
+
+    .hero-band .section-main,
+    .hero-band .section-caret,
+    .hero-band .section-action {
+      display: none;
+    }
+
+    .hero-band {
+      display: block;
+    }
+
+    .hero-band .hero-button {
+      position: absolute;
+      right: 24px;
+      bottom: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-media {
+        border-left: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .section-band {
+        flex-direction: column;
+      }
+
+      .section-main {
+        min-height: 0;
+      }
+
+      .section-copy-row {
+        padding-right: clamp(132px, 28vw, 171px);
+      }
+
+      .section-caret {
+        min-height: 56px;
+        width: 100%;
+      }
+
+      .section-action {
+        justify-content: flex-start;
+        padding-top: 0;
+        flex-basis: auto;
+      }
+
+      .section-button {
+        margin-left: 24px;
+        margin-bottom: 24px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+      }
+
+      .toolbar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-copy,
+      .section-copy,
+      .section-caret,
+      .section-action {
+        padding: 18px;
+      }
+
+      .section-copy-row {
+        padding-right: 132px;
+      }
+
+      .hero-media {
+        padding: 0;
+      }
+
+      .hero-band .hero-button {
+        right: 18px;
+        bottom: 18px;
+      }
+
+      .section-button {
+        margin-left: 18px;
+        margin-bottom: 18px;
+      }
+
+      .hero-copy h1,
+      .section-copy h2 {
+        max-width: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="page toolbar">
+      <a class="brand" href="#hero" aria-label="Echoes Of The Underworld home">
+        <span>Echoes Of The Underworld</span>
+      </a>
+      <a class="menu-button" href="#connect" aria-label="Hamburger Menu">
+        <span class="menu-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      </a>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="section-band hero-band hero" id="hero" aria-label="Hero Section">
+      <div class="hero-media" aria-label="Facebook Logo Image">
+        <img src="Echoes from the Underworld Logo (Facebook Cover).png" alt="Facebook logo for Echoes Of The Underworld" />
+      </div>
+      <a class="hero-button" href="#podcast">
+        Listen Now
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 12h13"></path>
+          <path d="M13 6l6 6-6 6"></path>
+        </svg>
+      </a>
+    </section>
+
+    <div class="section-stack">
+      <section class="section-band podcast" id="podcast" aria-label="Podcast">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">Podcast</p>
+            <div class="section-copy-row">
+              <h2>Transmuting Fate Into Freedom</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="#services" aria-label="Podcast section button">
+                <img src="ButtonPodcast.png" alt="Podcast button" class="button-icon" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band services" id="services" aria-label="Services">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">Services</p>
+            <div class="section-copy-row">
+              <h2>Emotional Alchemy Awaits</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="#resources" aria-label="Services section button">
+                <span class="button-placeholder" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band resources" id="resources" aria-label="Resources">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">Resources</p>
+            <div class="section-copy-row">
+              <h2>Descend Into Your Underworld</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="#store" aria-label="Resources section button">
+                <span class="button-placeholder" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band store" id="store" aria-label="Store">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">Store</p>
+            <div class="section-copy-row">
+              <h2>Visit Our Underworld Market</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="#about" aria-label="Store section button">
+                <span class="button-placeholder" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band about" id="about" aria-label="About Us">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">About Us</p>
+            <div class="section-copy-row">
+              <h2>Meet Your Underworld Guides</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="#connect" aria-label="About Us section button">
+                <span class="button-placeholder" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-band connect" id="connect" aria-label="Connect With Us">
+        <div class="section-main">
+          <div class="section-copy">
+            <p class="section-kicker">Connect With Us</p>
+            <div class="section-copy-row">
+              <h2>Every Journey Starts With One Step</h2>
+            </div>
+            <div class="button-cell">
+              <a class="section-button" href="mailto:hello@example.com" aria-label="Connect With Us section button">
+                <span class="button-placeholder" aria-hidden="true"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+  <script>
+    (() => {
+      const shineTargets = document.querySelectorAll('.section-button');
+
+      if (!shineTargets.length) {
+        return;
+      }
+
+      const replayShine = () => {
+        shineTargets.forEach((target) => target.classList.remove('is-shining'));
+        void document.body.offsetWidth;
+        shineTargets.forEach((target) => target.classList.add('is-shining'));
+      };
+
+      replayShine();
+      window.setInterval(replayShine, 3000);
+    })();
+  </script>
+</body>
+</html>
